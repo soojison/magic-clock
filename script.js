@@ -76,6 +76,7 @@ $(document).ready(
 
 			//special cases for 10~19
 			if(10 <= minutes && minutes <= 19) {
+				$('.minutes *').removeClass('glow');
 				switch(minutes) {
 					case 10:
 						$('.minutes .ten').addClass('glow');

@@ -117,7 +117,9 @@ $(document).ready(
 				// use minutes%10 to get 0~9
 				switch(minutes%10) {
 					case 0: //if minutes == 0, then we say ~ o'clock
-						$('.o, .clock').addClass('glow');
+						if(minutes == 0) {
+							$('.o, .clock').addClass('glow');
+						}	
 						break;
 					case 1:
 						$('.minutes .one').addClass('glow');

@@ -13,6 +13,7 @@ $(document).ready(
 			var minutes = dt.getMinutes();
 
 			/* parts of time marker */
+			$('.ofday *').removeClass('glow');
 			if(5 <= hours && hours < 12) {
 				$('.morning, .in, .the').addClass('glow');
 			} else if (12 <= hours && hours < 17) {
@@ -116,11 +117,6 @@ $(document).ready(
 				// taking care of the ones of the minute
 				// use minutes%10 to get 0~9
 				switch(minutes%10) {
-					case 0: //if minutes == 0, then we say ~ o'clock
-						if(minutes == 0) {
-							$('.o, .clock').addClass('glow');
-						}	
-						break;
 					case 1:
 						$('.minutes .one').addClass('glow');
 						break;
@@ -159,8 +155,12 @@ $(document).ready(
 					$('.minutes .forty').addClass('glow');
 				} else if (50 <= minutes && minutes < 60) { //50~59
 					$('.minutes .fifty').addClass('glow');
-				} else { //0~9, where we say, for instance "four o' two"
-					$('.minutes .oh').addClass('glow');
+				} else { //0~9
+					if(minutes == 0) { //when 0 = it's o'clock
+						$('.minutes .o, .clock').addClass('glow');
+					} else { //when != 0, it's "four o two"
+						$('.minutes .oh').addClass('glow');
+					}
 				}
 			}	
 
